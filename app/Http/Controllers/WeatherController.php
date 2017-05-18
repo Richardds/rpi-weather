@@ -33,7 +33,6 @@ class WeatherController extends Controller
      */
     public function data(Request $request)
     {
-        DB::connection()->enableQueryLog();
         $query = DB::table('data')
             ->select(['temperature', 'humidity', DB::raw('DATE_FORMAT(timestamp,\'%H:%i\') AS time')])
             ->where([

@@ -11,8 +11,8 @@
 |
 */
 
-$app->get('/', function () use ($app) {
-    return 'Raspberry Pi weather station API powered by ' . $app->version();
-});
+$app->get('/', 'WeatherController@graphs');
+
+$app->get('/data', 'WeatherController@data');
 
 $app->post('/store', 'WeatherController@store');

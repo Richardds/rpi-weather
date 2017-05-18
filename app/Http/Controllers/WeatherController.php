@@ -11,12 +11,12 @@ class WeatherController extends Controller
     /**
      * Time step in minutes.
      */
-    const TIME_STEP = 20;
+    const TIME_STEP = 30;
 
     /**
      * How many minutes to show in a graphs.
      */
-    const SHOW_HOURS = 6;
+    const SHOW_HOURS = 24;
 
     /**
      * @param Request $request

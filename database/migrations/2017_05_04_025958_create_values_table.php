@@ -15,9 +15,11 @@ class CreateValuesTable extends Migration
     public function up()
     {
         Schema::create('values', function (Blueprint $table) {
-            $table->dateTime('timestamp')->default(DB::raw('CURRENT_TIMESTAMP'));
+            $table->dateTime('timestamp');
             $table->float('temperature');
             $table->float('humidity');
+
+            $table->primary('timestamp');
         });
     }
 

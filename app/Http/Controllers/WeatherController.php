@@ -33,14 +33,14 @@ class WeatherController extends Controller
      */
     public function data(Request $request)
     {
-        $query = DB::table('data')
+        $query = DB::table('values')
             ->select(['temperature', 'humidity', DB::raw('DATE_FORMAT(timestamp,\'%H:%i\') AS time')])
             ->where([
                 [DB::raw('MOD(EXTRACT(MINUTE FROM timestamp), ' . self::TIME_STEP . ')'), '=', 0],
                 ['timestamp', '>', Carbon::now()->subHours(self::SHOW_HOURS)]
             ]);
 
-        return $query->get(); // --> JSON
+        return $query->get();
     }
 
     /**
@@ -59,7 +59,7 @@ class WeatherController extends Controller
             return response('Forbidden', 403);
         }
 
-        DB::table('data')->insert([
+        DB::table('values')->insert([
             'timestamp' => Carbon::now(),
             'temperature' => $request->get('temperature'),
             'humidity' => $request->get('humidity')

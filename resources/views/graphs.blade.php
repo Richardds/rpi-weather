@@ -5,6 +5,10 @@
     <title>Raspberry Pi Weather Station</title>
     <link href="{{ url("/assets/css/chartist.min.css") }}" type="text/css" rel="stylesheet">
     <style>
+        body {
+            font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+        }
+
         .chart svg.ct-chart-bar, .chart svg.ct-chart-line {
             overflow: visible;
         }
@@ -46,15 +50,34 @@
             fill: rgba(80, 200, 200, 0.6);
         }
 
+        @keyframes fadein {
+            from { opacity: 0; }
+            to   { opacity: 1; }
+        }
+
         h1.title {
             text-align: center;
             color: #5f5f5f;
         }
+
+        .status {
+            font-size: 18px;
+            text-align: center;
+            margin: 5px;
+        }
+
+        .status.loading {
+            color: blue;
+        }
+
+        .status.error {
+            color: red;
+        }
     </style>
 </head>
-<body>
-
+<body onload="Weather.init()">
 <h1 class="title">Raspberry Pi weather station</h1>
+<div id="status" class="status loading"></div>
 <div id="chart-temperature" class="chart"></div>
 <div id="chart-humidity" class="chart"></div>
 

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Carbon\Carbon;
+use Exception;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -27,20 +28,44 @@ class WeatherController extends Controller
         return view('graphs');
     }
 
+    private function makeApiResponse(array $data, bool $success = true)
+    {
+        return [
+            'data' => $success ? $data : [],
+            'success' => $success
+        ];
+    }
+
     /**
      * @param Request $request
      * @return mixed
      */
     public function data(Request $request)
     {
-        $query = DB::table('values')
+        $history_query = DB::table('values')
             ->select(['temperature', 'humidity', DB::raw('DATE_FORMAT(timestamp,\'%H:%i\') AS time')])
             ->where([
                 [DB::raw('MOD(EXTRACT(MINUTE FROM timestamp), ' . self::TIME_STEP . ')'), '=', 0],
                 ['timestamp', '>', Carbon::now()->subHours(self::SHOW_HOURS)]
             ]);
 
-        return $query->get();
+        $now_query = DB::table('values')->select([
+            'temperature',
+            'humidity',
+            DB::raw('DATE_FORMAT(timestamp,\'%H:%i\') AS time')
+        ])->orderBy('timestamp', 'DESC');
+
+        $success = true;
+        $response_data = [];
+        
+        try {
+            $response_data['history'] = $history_query->get();
+            $response_data['now'] = $now_query->first();
+        } catch (Exception $e) {
+            $success = false;
+        }
+
+        return $this->makeApiResponse($response_data, $success);
     }
 
     /**

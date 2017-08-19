@@ -11,18 +11,22 @@
   "require": {
     "php": ">=5.6.4",
     "laravel/lumen-framework": "5.4.*",
-    "vlucas/phpdotenv": "~2.2"
+    "vlucas/phpdotenv": "~2.2",
+    "predis/predis": "~1.0",
+    "illuminate/redis": "5.4.*"
   },
   "require-dev": {
     "fzaninotto/faker": "~1.4",
     "phpunit/phpunit": "~5.0",
-    "mockery/mockery": "~0.9",
-    "barryvdh/laravel-ide-helper": "^2.4"
+    "mockery/mockery": "~0.9"
   },
   "autoload": {
     "psr-4": {
       "App\\": "app/"
-    }
+    },
+    "files": [
+      "app/Support/helpers.php"
+    ]
   },
   "autoload-dev": {
     "classmap": [
@@ -33,10 +37,6 @@
   "scripts": {
     "post-root-package-install": [
       "php -r \"copy('.env.example', '.env');\""
-    ],
-    "post-update-cmd": [
-      "php artisan ide-helper:generate",
-      "php artisan ide-helper:meta"
     ]
   },
   "minimum-stability": "dev",

@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Raspberry Pi Weather</title>
-    <link rel="stylesheet" href="{{ url("/assets/css/chartist.min.css") }}" type="text/css">
+    <link rel="stylesheet" href="{{ asset_url("/assets/css/chartist.min.css") }}" type="text/css">
     <link rel="shortcut icon" href="/assets/images/favicon.ico">
     <link rel="apple-touch-icon" sizes="180x180" href="/assets/images/apple-touch-icon.png">
     <link rel="icon" type="image/png" sizes="32x32" href="/assets/images/favicon-32x32.png">
@@ -75,7 +75,7 @@
 <div id="chart-temperature" class="chart"></div>
 <div id="chart-humidity" class="chart"></div>
 
-<script src="{{ url("/assets/js/chartist.min.js") }}" type="application/javascript"></script>
-<script src="{{ url("/assets/js/rpi-weather.js") }}" type="application/javascript"></script>
+<script src="{{ asset_url("/assets/js/chartist.min.js") }}" type="application/javascript"></script>
+<script src="{{ asset_url("/assets/js/rpi-weather.js") }}" type="application/javascript"></script>
 </body>
 </html>

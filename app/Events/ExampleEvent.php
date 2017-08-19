@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Events;
+namespace Richardds\Weather\Events;
 
 class ExampleEvent extends Event
 {

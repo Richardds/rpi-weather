@@ -39,12 +39,12 @@ $app->withEloquent();
 
 $app->singleton(
     Illuminate\Contracts\Debug\ExceptionHandler::class,
-    App\Exceptions\Handler::class
+    Richardds\Weather\Exceptions\Handler::class
 );
 
 $app->singleton(
     Illuminate\Contracts\Console\Kernel::class,
-    App\Console\Kernel::class
+    Richardds\Weather\Console\Kernel::class
 );
 
 /*
@@ -59,11 +59,11 @@ $app->singleton(
 */
 
 // $app->middleware([
-//    App\Http\Middleware\ExampleMiddleware::class
+//    Richardds\Weather\Http\Middleware\ExampleMiddleware::class
 // ]);
 
 // $app->routeMiddleware([
-//     'auth' => App\Http\Middleware\Authenticate::class,
+//     'auth' => Richardds\Weather\Http\Middleware\Authenticate::class,
 // ]);
 
 /*
@@ -79,10 +79,10 @@ $app->singleton(
 
 $app->configure('database');
 
-// $app->register(App\Providers\AuthServiceProvider::class);
-// $app->register(App\Providers\EventServiceProvider::class);
+// $app->register(Richardds\Weather\Providers\AuthServiceProvider::class);
+// $app->register(Richardds\Weather\Providers\EventServiceProvider::class);
 
-$app->register(App\Providers\AppServiceProvider::class);
+$app->register(Richardds\Weather\Providers\AppServiceProvider::class);
 $app->register(Illuminate\Redis\RedisServiceProvider::class);
 
 /*
@@ -96,7 +96,7 @@ $app->register(Illuminate\Redis\RedisServiceProvider::class);
 |
 */
 
-$app->group(['namespace' => 'App\Http\Controllers'], function ($app) {
+$app->group(['namespace' => 'Richardds\Weather\Http\Controllers'], function ($app) {
     require __DIR__ . '/../routes/web.php';
 });
 

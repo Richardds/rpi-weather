@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Providers;
+namespace Richardds\Weather\Providers;
 
 use App\User;
 use Illuminate\Support\ServiceProvider;

@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Exceptions;
+namespace Richardds\Weather\Exceptions;
 
 use Exception;
 use Illuminate\Auth\Access\AuthorizationException;

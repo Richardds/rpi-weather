@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Listeners;
+namespace Richardds\Weather\Listeners;
 
 use App\Events\ExampleEvent;
 

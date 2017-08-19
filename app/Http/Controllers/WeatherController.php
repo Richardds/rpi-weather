@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace Richardds\Weather\Http\Controllers;
 
 use Cache;
 use Carbon\Carbon;

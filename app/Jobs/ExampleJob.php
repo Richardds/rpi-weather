@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Jobs;
+namespace Richardds\Weather\Jobs;
 
 class ExampleJob extends Job
 {

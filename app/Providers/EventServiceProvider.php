@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Providers;
+namespace Richardds\Weather\Providers;
 
 use Laravel\Lumen\Providers\EventServiceProvider as ServiceProvider;
 

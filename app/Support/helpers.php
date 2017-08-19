@@ -1,5 +1,7 @@
 <?php
 
+use Illuminate\Support\Facades\Cache;
+
 if (!function_exists('asset_url')) {
     /**
      * Generate a url for the application with hashed target suffix.

@@ -24,7 +24,7 @@ $app = new Laravel\Lumen\Application(
 );
 
 $app->withFacades();
-$app->withEloquent();
+// $app->withEloquent();
 
 /*
 |--------------------------------------------------------------------------
@@ -81,8 +81,8 @@ $app->configure('database');
 
 // $app->register(Richardds\Weather\Providers\AuthServiceProvider::class);
 // $app->register(Richardds\Weather\Providers\EventServiceProvider::class);
+// $app->register(Richardds\Weather\Providers\AppServiceProvider::class);
 
-$app->register(Richardds\Weather\Providers\AppServiceProvider::class);
 $app->register(Illuminate\Redis\RedisServiceProvider::class);
 
 /*

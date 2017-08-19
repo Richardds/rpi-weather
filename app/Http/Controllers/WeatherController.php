@@ -2,11 +2,11 @@
 
 namespace Richardds\Weather\Http\Controllers;
 
-use Cache;
 use Carbon\Carbon;
-use DB;
 use Exception;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Cache;
+use Illuminate\Support\Facades\DB;
 
 class WeatherController extends Controller
 {
@@ -36,10 +36,9 @@ class WeatherController extends Controller
     const CACHE_CURRENT_DATA_KEY = 'current_data';
 
     /**
-     * @param Request $request
      * @return \Illuminate\View\View
      */
-    public function graphs(Request $request)
+    public function graphs()
     {
         return view('graphs');
     }
@@ -53,10 +52,9 @@ class WeatherController extends Controller
     }
 
     /**
-     * @param Request $request
-     * @return mixed
+     * @return array
      */
-    public function data(Request $request)
+    public function data()
     {
         $success = true;
         $response_data = [];
@@ -88,8 +86,6 @@ class WeatherController extends Controller
         } catch (Exception $e) {
             $success = false;
             $response_data = [];
-
-            return var_dump($e);
         }
 
         return $this->makeApiResponse($response_data, $success);

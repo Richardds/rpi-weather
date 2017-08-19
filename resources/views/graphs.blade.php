@@ -2,8 +2,15 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Raspberry Pi Weather Station</title>
-    <link href="{{ url("/assets/css/chartist.min.css") }}" type="text/css" rel="stylesheet">
+    <title>Raspberry Pi Weather</title>
+    <link rel="stylesheet" href="{{ url("/assets/css/chartist.min.css") }}" type="text/css">
+    <link rel="shortcut icon" href="/assets/images/favicon.ico">
+    <link rel="apple-touch-icon" sizes="180x180" href="/assets/images/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/assets/images/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/assets/images/favicon-16x16.png">
+    <link rel="manifest" href="/assets/images/manifest.json">
+    <link rel="mask-icon" href="/assets/images/safari-pinned-tab.svg" color="#5bbad5">
+    <meta name="theme-color" content="#ffffff">
     <style>
         body {
             font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
@@ -38,21 +45,8 @@
             fill: rgba(255, 200, 0, 0.6);
         }
 
-        #chart-humidity .ct-line {
+        #chart-humidity .ct-bar {
             stroke: rgba(80, 200, 200, 0.8);
-        }
-
-        #chart-humidity .ct-point {
-            stroke: rgba(80, 200, 200, 1.0);
-        }
-
-        #chart-humidity .ct-area {
-            fill: rgba(80, 200, 200, 0.6);
-        }
-
-        @keyframes fadein {
-            from { opacity: 0; }
-            to   { opacity: 1; }
         }
 
         h1.title {
@@ -76,7 +70,7 @@
     </style>
 </head>
 <body onload="Weather.init()">
-<h1 class="title">Raspberry Pi weather station</h1>
+<h1 class="title">Raspberry Pi Weather</h1>
 <div id="status" class="status loading"></div>
 <div id="chart-temperature" class="chart"></div>
 <div id="chart-humidity" class="chart"></div>

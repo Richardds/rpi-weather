@@ -19,60 +19,67 @@ var Weather = {
         xhr.onload = function () {
             if (xhr.status === 200) {
                 var response = JSON.parse(xhr.responseText);
-                var labels = [], temperature = [], humidity = [];
 
                 if (!response.success) {
                     self.statusMessage('Failed to load weather data!', 'error');
                     return;
                 }
 
-                var data = response.data;
-                for (var i = 0; i < data.history.length; i++) {
-                    var history_data = data.history[i];
-                    labels.push(history_data['time']);
-                    temperature.push(history_data['temperature']);
-                    humidity.push(history_data['humidity']);
-                }
-
-                var chart_temperature = new Chartist.Line('#chart-temperature', {
-                    labels: labels,
-                    series: [temperature]
-                }, {
-                    fullWidth: true,
-                    showArea: true,
-                    lineSmooth: Chartist.Interpolation.cardinal({
-                        fillHoles: true
-                    }),
-                    axisY: {
-                        labelInterpolationFnc: function (value) {
-                            return value + '°C'
-                        }
-                    }
-                });
-
-                var chart_humidity = new Chartist.Line('#chart-humidity', {
-                    labels: labels,
-                    series: [humidity]
-                }, {
-                    fullWidth: true,
-                    showArea: true,
-                    lineSmooth: Chartist.Interpolation.cardinal({
-                        fillHoles: true
-                    }),
-                    axisY: {
-                        labelInterpolationFnc: function (value) {
-                            return value + '%'
-                        }
-                    }
-                });
-
-                var now = data.now;
-                self.statusMessage(now['time'] + ' / ' + now['temperature'] + '°C / ' + now['humidity'] + '%');
+                self.data(response.data)
             } else {
                 this.statusMessage('Failed to load weather data!', 'error');
             }
         };
         xhr.send();
+    },
+    data: function (data) {
+        var labels = [], temperature = [], humidity = [];
+
+        for (var i = 0; i < data.history.length; i++) {
+            var history_data = data.history[i];
+            labels.push(history_data['time']);
+            temperature.push(history_data['temperature']);
+            humidity.push(history_data['humidity']);
+        }
+
+        var chart_temperature = new Chartist.Line('#chart-temperature', {
+            labels: labels,
+            series: [temperature]
+        }, {
+            height: 300,
+            fullWidth: true,
+            showArea: true,
+            lineSmooth: Chartist.Interpolation.cardinal({
+                fillHoles: true
+            }),
+            axisY: {
+                labelInterpolationFnc: function (value) {
+                    return value + '°C'
+                }
+            }
+        });
+
+        var chart_humidity = new Chartist.Bar('#chart-humidity', {
+            labels: labels,
+            series: [humidity]
+        }, {
+            height: 300,
+            high: 100,
+            low: 0,
+            fullWidth: true,
+            showArea: true,
+            lineSmooth: Chartist.Interpolation.cardinal({
+                fillHoles: true
+            }),
+            axisY: {
+                labelInterpolationFnc: function (value) {
+                    return value + '%'
+                }
+            }
+        });
+
+        var now = data.now;
+        this.statusMessage(now['time'] + ' / ' + now['temperature'] + '°C / ' + now['humidity'] + '%');
     }
 };
 

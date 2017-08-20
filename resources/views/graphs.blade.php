@@ -4,12 +4,12 @@
     <meta charset="UTF-8">
     <title>Raspberry Pi Weather</title>
     <link rel="stylesheet" href="{{ asset_url("/assets/css/chartist.min.css") }}" type="text/css">
-    <link rel="shortcut icon" href="/assets/images/favicon.ico">
-    <link rel="apple-touch-icon" sizes="180x180" href="/assets/images/apple-touch-icon.png">
-    <link rel="icon" type="image/png" sizes="32x32" href="/assets/images/favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="/assets/images/favicon-16x16.png">
-    <link rel="manifest" href="/assets/images/manifest.json">
-    <link rel="mask-icon" href="/assets/images/safari-pinned-tab.svg" color="#5bbad5">
+    <link rel="shortcut icon" href="{{ asset_url("/assets/images/favicon.ico") }}">
+    <link rel="apple-touch-icon" sizes="180x180" href="{{ asset_url("/assets/images/apple-touch-icon.png") }}">
+    <link rel="icon" type="image/png" sizes="32x32" href="{{ asset_url("/assets/images/favicon-32x32.png") }}">
+    <link rel="icon" type="image/png" sizes="16x16" href="{{ asset_url("/assets/images/favicon-16x16.png") }}">
+    <link rel="manifest" href="{{ asset_url("/assets/images/manifest.json") }}">
+    <link rel="mask-icon" href="{{ asset_url("/assets/images/safari-pinned-tab.svg") }}" color="#5bbad5">
     <meta name="theme-color" content="#ffffff">
     <style>
         body {
